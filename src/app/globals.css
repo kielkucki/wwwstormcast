@@ -2,32 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  @keyframes slide {
+    from { left: -100%; width: 30%; }
+    50% { width: 30%; }
+    70% { width: 70%; }
+    to { left: 100%; }
   }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .image-bg {
+    display: flex;
+
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+  
+    background: url("/img.png") no-repeat fixed center/cover;
+    z-index: -100;
+  }
+  .bg-500 {
+    background-size: 500% auto;
+  }
+  .frosted {
+    background: rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(5px);
+  }
+  .overlay {
+    background: rgba(0, 0, 0, 0.32);
+    position: fixed;
+    z-index: -99;
+    height: 100%;
+    width: 100%;
+  }
+  .set-pointer {
+    cursor: url('/pointer'), auto;
+  }
+}
+body {
+  /*  custom pointer and scrollbar styles */
+
+  cursor: url('/cursor16.png'), auto;
+  overflow: scroll;
+  scrollbar-color: red orange;
+  scrollbar-width: thin;
+
+  /*  custom pointer and scrollbar styles */
+
 }
